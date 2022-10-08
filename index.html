@@ -1,0 +1,25 @@
+<button onclick="getloca()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+    var x = document.getElementById("demo");
+
+    function getloca() {
+        return getlocation();
+    }
+
+    function getlocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(visitorLocation);
+        } else {
+            x.innerHTML = 'This browser does not support Geolocation Service.';
+        }
+    }
+
+    function visitorLocation(position) {
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        x.innerHTML = 'https://www.google.com/maps/place/'+lat+'+'+long+'/@' + lat + ',' + long + ',19z';
+    }
+</script>
